@@ -1,0 +1,45 @@
+#https://mluukkai.github.io/osa1/
+#https://www.websequencediagrams.com/
+
+title assignment_05
+
+kayttaja->selain:
+note left of selain
+kayttaja kirjottaa osoiteriville
+fullstack-exampleapp.herokuapp.com/spa
+end note
+
+note left of selain
+ selain hakee sisällön
+end note
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa
+palvelin->selain: status 200, sivun HTML-koodi
+note left of selain
+ selain näyttää palvelimen palauttaman HTML:n
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/main.css
+palvelin->selain: status 200, CSS-tiedosto
+note left of selain
+ selain päivittää näkymää CSS:n mukaisesti
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/spa.js
+palvelin->selain: status 200, JS-tiedosto
+note left of selain
+ selain suorittaa js-koodin, joka alkuun haetaan
+ data.json
+end note
+
+selain->palvelin: GET fullstack-exampleapp.herokuapp.com/data.json
+palvelin->selain: status 200, JSON-tiedosto
+note left of selain
+ selain saa datan ja jatkaa js-koodin
+ suorittamista muokkaamalla DOM:ia
+end note
+
+selain->kayttaja:
+note left of selain
+ selain näyttää lopullisen/muokatun HTML 
+ -sisällön
+end note
