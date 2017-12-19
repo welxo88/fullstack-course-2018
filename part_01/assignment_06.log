@@ -1,0 +1,27 @@
+#https://mluukkai.github.io/osa1/
+#https://www.websequencediagrams.com/
+
+title assignment_06
+
+kayttaja->selain:
+note left of selain
+kayttaja kirjoittaa jotain tekstikenttään ja
+painaa 'talleta'
+end note
+
+note left of selain
+ spa.js:n mukaisesti uusi tieto lisätään pinoon, 
+ sitten päivitetään näkymää käyttäjälle
+end note
+selain->kayttaja:
+
+note left of selain
+ tieto lähetetään palvelimelle
+end note
+
+selain->palvelin: POST fullstack-exampleapp.herokuapp.com/new_note_spa
+note left of palvelin
+ palvelin tallentaa noten ja vastaa
+end note
+palvelin->selain: status 201, 'note created'
+
