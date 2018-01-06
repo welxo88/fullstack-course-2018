@@ -1,22 +1,26 @@
 import React from 'react';
-import Kurssi from './Kurssi'
+import axios from 'axios';
 
-//refaktorointi pienimpiin paloihin tässä kohdin tuntuu tarpeettomalta
+//refaktorointi vähän turhaa minusta
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             persons: [
-                { name: 'Arto Hellas', phone: '040-123456' },
-                { name: 'Martti Tienari', phone: '040-123456' },
-                { name: 'Arto Järvinen', phone: '040-123456' },
-                { name: 'Lea Kutvonen', phone: '040-123456' }
+                { name: '.', phone: '.' },
             ],
             newName: 'kirjoita uusi nimi...',
             newPhone: '00-000',
             nameFilter: ''
         }
+    }
+
+    componentWillMount() {
+        axios.get('http://localhost:3001/persons')
+            .then(response => {
+                this.setState({ persons: response.data })
+            })
     }
 
     changeInputValue = (e) => {
